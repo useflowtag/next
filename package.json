@@ -3,6 +3,10 @@
 	"version": "1.1.1",
 	"description": "",
 	"main": "./dist/index.js",
+	"repository": {
+		"url": "https://github.com/useflowtag/next"
+	},
+	"homepage": "https://flowtagdocs.qwerty.ovh/sdk/next",
 	"scripts": {
 		"build": "tsup index.tsx --format esm,cjs --dts --out-dir dist --clean",
 		"format": "biome format --write",
@@ -24,9 +28,9 @@
 		}
 	},
 	"sideEffects": false,
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"keywords": ["flowtag", "analytics", "nextjs", "react", "sdk", "ftag"],
+	"author": "Flowtag Team & Contributors",
+	"license": "MIT",
 	"packageManager": "pnpm@10.14.0",
 	"peerDependencies": {
 		"next": ">=12.0.0",
