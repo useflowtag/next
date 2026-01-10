@@ -1,39 +1,55 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: Publish packages
+name: Publish package to npm
 
 on:
-  workflow_dispatch:
-  release:
-    types: [created]
   push:
-    branches:
-      - "release"
-    paths:
-      - "packages/next/**"
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
-  publish-npm:
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  publish:
     runs-on: ubuntu-latest
-    environment: production
+
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org/
-          cache: 'pnpm'
-      - name: Build Package
+          registry-url: https://registry.npmjs.org
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - run: pnpm install --frozen-lockfile
+
+      # opcjonalnie: build/test
+      - run: pnpm lint
+      - run: pnpm typecheck
+
+      - name: Decide dist-tag
+        id: meta
+        shell: bash
         run: |
-          pnpm install
-          pnpm run build
-        working-directory: "packages/next"
-      - name: Publish Package
-        run: pnpm publish --no-git-checks
-        working-directory: "packages/next"
+          TAG="${GITHUB_REF_NAME}"              # e.g. v1.2.3 or v1.2.4-canary.0
+          VERSION="${TAG#v}"                    # strip leading v
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+          if [[ "$VERSION" == *"-canary."* || "$VERSION" == *"-canary"* ]]; then
+            echo "dist_tag=canary" >> "$GITHUB_OUTPUT"
+          else
+            echo "dist_tag=latest" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set package version (without git tag)
+        shell: bash
+        run: |
+          # jeśli publikujesz tylko jedną paczkę:
+          npm version "${{ steps.meta.outputs.version }}" --no-git-tag-version
+
+      - name: Publish
+        run: npm publish --access public --tag "${{ steps.meta.outputs.dist_tag }}"
