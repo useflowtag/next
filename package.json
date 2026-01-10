@@ -5,8 +5,10 @@
 	"main": "./dist/index.js",
 	"scripts": {
 		"build": "tsup index.tsx --format esm,cjs --dts --out-dir dist --clean",
-		"fmt": "biome format --write",
-		"lint": "biome lint --fix --unsafe"
+		"format": "biome format --write",
+		"lint": "biome lint --fix",
+		"lint:ci": "biome lint",
+		"typecheck": "tsc --noEmit"
 	},
 	"publishConfig": {
 		"access": "public"

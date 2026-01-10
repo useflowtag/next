@@ -1,0 +1,59 @@
+name: Checks
+
+on:
+    push:
+        branches:
+        - main
+    pull_request:
+        branches:
+        - main
+
+jobs:
+    install-dependencies:
+        name: Install dependencies
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v4
+
+        - uses: actions/setup-node@v4
+          with:
+              node-version: 22
+              registry-url: https://registry.npmjs.org
+
+        - uses: pnpm/action-setup@v4
+        - run: pnpm install --frozen-lockfile
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        needs: install-dependencies
+
+        steps:
+        - uses: actions/checkout@v4
+
+        - uses: actions/setup-node@v4
+          with:
+              node-version: 22
+              registry-url: https://registry.npmjs.org
+
+        - uses: pnpm/action-setup@v4
+        - run: pnpm install --frozen-lockfile
+
+        - run: pnpm run lint:ci
+    typecheck:
+        name: Typecheck
+        runs-on: ubuntu-latest
+        needs: install-dependencies
+
+        steps:
+        - uses: actions/checkout@v4
+
+        - uses: actions/setup-node@v4
+          with:
+              node-version: 22
+              registry-url: https://registry.npmjs.org
+
+        - uses: pnpm/action-setup@v4
+        - run: pnpm install --frozen-lockfile
+
+        - run: pnpm run typecheck

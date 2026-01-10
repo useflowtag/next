@@ -24,9 +24,8 @@ jobs:
       - uses: pnpm/action-setup@v4
       - run: pnpm install --frozen-lockfile
 
-      # opcjonalnie: build/test
-      - run: pnpm lint
-      - run: pnpm typecheck
+      - run: pnpm run lint:ci
+      - run: pnpm run typecheck
 
       - name: Decide dist-tag
         id: meta
