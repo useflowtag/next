@@ -48,11 +48,12 @@ jobs:
           else
             echo "dist_tag=latest" >> "$GITHUB_OUTPUT"
           fi
+          echo "Determined version: $VERSION"
+          echo "Determined dist-tag: $DIST_TAG"
 
       - name: Set package version (without git tag)
         shell: bash
         run: |
-          # jeśli publikujesz tylko jedną paczkę:
           npm version "${{ steps.meta.outputs.version }}" --no-git-tag-version
 
       - name: Publish
