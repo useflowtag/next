@@ -6,7 +6,7 @@
 	"repository": {
 		"url": "https://github.com/useflowtag/next"
 	},
-	"homepage": "https://flowtagdocs.qwerty.ovh/sdk/next",
+	"homepage": "https://flowtagdocs.qwerty.ovh/docs/sdk/next",
 	"scripts": {
 		"build": "tsup index.tsx --format esm,cjs --dts --out-dir dist --clean",
 		"format": "biome format --write",
