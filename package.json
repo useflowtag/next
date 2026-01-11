@@ -1,7 +1,7 @@
 {
 	"name": "@flowtag/next",
 	"version": "1.1.1",
-	"description": "",
+	"description": "Flowtag tracking adapter for Next.js",
 	"main": "./dist/index.js",
 	"repository": {
 		"url": "https://github.com/useflowtag/next"
