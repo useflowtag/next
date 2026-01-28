@@ -65,8 +65,9 @@ Thanks for your interest in contributing to Flowtag! 💛
 By contributing, you agree that your contributions will be licensed under the project’s license.
 
 ## License
-useflowtag/next is licensed under [Apache-2.0 License](https://github.com/useflowtag/next/blob/main/LICENSE)
+[useflowtag/next](https://github.com/useflowtag/next) is licensed under [Apache-2.0 License](https://github.com/useflowtag/next/blob/main/LICENSE)
 
 ---
 © 2026 Flowtag. All rights reserved.
+
 
