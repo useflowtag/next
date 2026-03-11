@@ -30,7 +30,7 @@
 	"sideEffects": false,
 	"keywords": ["flowtag", "analytics", "nextjs", "react", "sdk", "ftag"],
 	"author": "Flowtag Team & Contributors",
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"packageManager": "pnpm@10.14.0",
 	"peerDependencies": {
 		"next": ">=12.0.0",
