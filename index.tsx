@@ -23,7 +23,7 @@ interface FlowtagProps {
 function Flowtag(props: FlowtagProps) {
 	const {
 		trackerId,
-		endpoint = "https://flowtagbeacon.qwerty.ovh/tag.js",
+		endpoint = "https://flowtagbeacon.qwerty.ovh/",
 		silent = false,
 		syncWithGoogleTag = true,
 		beaconStrategy = "manual",
