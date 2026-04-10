@@ -32,7 +32,7 @@ function Flowtag(props: FlowtagProps) {
 	return (
 		<Script
 			id={`__flowtag_next_${id}`}
-			src={endpoint}
+			src={`${endpoint}/tag.js`}
 			async
 			defer
 			data-ftag={trackerId}
