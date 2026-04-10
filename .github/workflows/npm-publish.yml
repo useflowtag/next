@@ -22,9 +22,9 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
-      
-      - name: Upgrade npm
-        run: npm i -g npm@^11.5.1
+
+      # Removed: upgrading npm globally was causing npm to crash with:
+      # "Cannot find module 'promise-retry'" from npm's internal dependencies.
 
       - uses: pnpm/action-setup@v4
       - run: pnpm install --frozen-lockfile
@@ -49,8 +49,9 @@ jobs:
           else
             echo "dist_tag=latest" >> "$GITHUB_OUTPUT"
           fi
+
           echo "Determined version: $VERSION"
-          echo "Determined dist-tag: $DIST_TAG"
+          echo "Determined dist-tag: ${{ steps.meta.outputs.dist_tag }}"
 
       - name: Set package version (without git tag)
         shell: bash
