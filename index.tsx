@@ -29,14 +29,16 @@ function Flowtag(props: FlowtagProps) {
 		beaconStrategy = "manual",
 	} = props;
 	const id = useId();
+	const normalizedEndpoint = new URL(endpoint).toString();
+
 	return (
 		<Script
 			id={`__flowtag_next_${id}`}
-			src={`${endpoint}/tag.js`}
+			src={new URL("tag.js", normalizedEndpoint).toString()}
 			async
 			defer
 			data-ftag={trackerId}
-			data-endpoint={endpoint}
+			data-endpoint={normalizedEndpoint}
 			data-silent={silent}
 			data-gtagsync={syncWithGoogleTag}
 			data-beacon-strategy={beaconStrategy}
