@@ -4,7 +4,8 @@
 	"description": "Flowtag tracking adapter for Next.js",
 	"main": "./dist/index.js",
 	"repository": {
-		"url": "https://github.com/useflowtag/next"
+		"type": "git",
+		"url": "git+https://github.com/useflowtag/next.git"
 	},
 	"homepage": "https://flowtagdocs.qwerty.ovh/docs/sdk/next",
 	"scripts": {
