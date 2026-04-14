@@ -3,10 +3,10 @@ import { useId } from "react";
 
 interface FlowtagProps {
 	trackerId: string;
-	endpoint?: string;
-	silent?: boolean;
+	baseUrl?: string;
+	debug?: boolean;
 	syncWithGoogleTag?: boolean;
-	beaconStrategy?: "immediate" | "after_consent" | "manual";
+	autoInit?: boolean;
 }
 
 /**
@@ -14,7 +14,7 @@ interface FlowtagProps {
  * 
  * Example implementation:
  * ```
- * <Flowtag trackerId="your-tracker-id" silent={true} syncWithGoogleTag={true} beaconStrategy="after_consent" />
+ * <Flowtag trackerId="your-tracker-id" debug={true} syncWithGoogleTag={true} autoInit={true} />
  * ```
  *
  * @param props - Props for Flowtag component
@@ -23,13 +23,13 @@ interface FlowtagProps {
 function Flowtag(props: FlowtagProps) {
 	const {
 		trackerId,
-		endpoint = "https://flowtagbeacon.qwerty.ovh/",
-		silent = false,
+		baseUrl = "https://flowtagbeacon.qwerty.ovh/",
+		debug = false,
+		autoInit = true,
 		syncWithGoogleTag = true,
-		beaconStrategy = "manual",
 	} = props;
 	const id = useId();
-	const normalizedEndpoint = new URL(endpoint).toString();
+	const normalizedEndpoint = new URL(baseUrl).toString();
 
 	return (
 		<Script
@@ -39,9 +39,9 @@ function Flowtag(props: FlowtagProps) {
 			defer
 			data-ftag={trackerId}
 			data-endpoint={normalizedEndpoint}
-			data-silent={silent}
+			data-debug={debug}
 			data-gtagsync={syncWithGoogleTag}
-			data-beacon-strategy={beaconStrategy}
+			data-auto-init={autoInit}
 		/>
 	);
 }
