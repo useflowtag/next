@@ -59,8 +59,16 @@ function getConsent(): boolean {
 	return window.flowtag.getConsent();
 }
 
-const F = { fetchBeacon, consentCookies, getConsent };
+function capture(eventName: string, eventData?: Record<string, any>) {
+	return window.flowtag.capture(eventName, eventData);
+}
+
+const flowtag = { fetchBeacon, consentCookies, getConsent, capture }
+/**
+ * @deprecated Use `flowtag` instead
+ */
+const F = flowtag;
 
 export default Flowtag;
 export type { FlowtagProps };
-export { Flowtag, F };
+export { Flowtag, F, flowtag };
