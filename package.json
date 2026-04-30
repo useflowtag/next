@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "git+https://github.com/useflowtag/next.git"
 	},
-	"homepage": "https://flowtagdocs.qwerty.ovh/docs/sdk/next",
+	"homepage": "https://docs.flowtag.dev/sdk/next",
 	"scripts": {
 		"build": "tsup index.tsx --format esm,cjs --dts --out-dir dist --clean",
 		"format": "biome format --write",
