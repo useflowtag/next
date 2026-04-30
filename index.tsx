@@ -1,5 +1,6 @@
 import Script from "next/script";
 import { useId } from "react";
+import type { FlowtagConfigOptions } from "./types";
 
 interface FlowtagProps {
 	trackerId: string;
@@ -63,7 +64,20 @@ function capture(eventName: string, eventData?: Record<string, any>) {
 	return window.flowtag.capture(eventName, eventData);
 }
 
-const flowtag = { fetchBeacon, consentCookies, getConsent, capture };
+function getConfig(): FlowtagConfigOptions;
+function getConfig<K extends keyof FlowtagConfigOptions>(key: K): FlowtagConfigOptions[K];
+function getConfig<K extends keyof FlowtagConfigOptions>(key?: K): FlowtagConfigOptions | FlowtagConfigOptions[K] {
+	if (key) {
+		return window.flowtag.getConfig(key);
+	}
+	return window.flowtag.getConfig();
+}
+
+function setConfig(key: keyof FlowtagConfigOptions, value: FlowtagConfigOptions[keyof FlowtagConfigOptions]) {
+	window.flowtag.setConfig(key, value);
+}
+
+const flowtag = { fetchBeacon, consentCookies, getConsent, capture, getConfig, setConfig };
 /**
  * @deprecated Use `flowtag` instead
  */
