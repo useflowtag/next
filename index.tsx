@@ -65,19 +65,33 @@ function capture(eventName: string, eventData?: Record<string, any>) {
 }
 
 function getConfig(): FlowtagConfigOptions;
-function getConfig<K extends keyof FlowtagConfigOptions>(key: K): FlowtagConfigOptions[K];
-function getConfig<K extends keyof FlowtagConfigOptions>(key?: K): FlowtagConfigOptions | FlowtagConfigOptions[K] {
+function getConfig<K extends keyof FlowtagConfigOptions>(
+	key: K,
+): FlowtagConfigOptions[K];
+function getConfig<K extends keyof FlowtagConfigOptions>(
+	key?: K,
+): FlowtagConfigOptions | FlowtagConfigOptions[K] {
 	if (key) {
 		return window.flowtag.getConfig(key);
 	}
 	return window.flowtag.getConfig();
 }
 
-function setConfig(key: keyof FlowtagConfigOptions, value: FlowtagConfigOptions[keyof FlowtagConfigOptions]) {
+function setConfig(
+	key: keyof FlowtagConfigOptions,
+	value: FlowtagConfigOptions[keyof FlowtagConfigOptions],
+) {
 	window.flowtag.setConfig(key, value);
 }
 
-const flowtag = { fetchBeacon, consentCookies, getConsent, capture, getConfig, setConfig };
+const flowtag = {
+	fetchBeacon,
+	consentCookies,
+	getConsent,
+	capture,
+	getConfig,
+	setConfig,
+};
 /**
  * @deprecated Use `flowtag` instead
  */

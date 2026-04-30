@@ -13,8 +13,13 @@ declare global {
 			getConsent: () => boolean;
 			capture: (eventName: string, eventData?: Record<string, any>) => void;
 			getConfig(): FlowtagConfigOptions;
-			getConfig<K extends keyof FlowtagConfigOptions>(key: K): FlowtagConfigOptions[K];
-      setConfig<K extends keyof FlowtagConfigOptions>(key: K, value: FlowtagConfigOptions[K]): void;
+			getConfig<K extends keyof FlowtagConfigOptions>(
+				key: K,
+			): FlowtagConfigOptions[K];
+			setConfig<K extends keyof FlowtagConfigOptions>(
+				key: K,
+				value: FlowtagConfigOptions[K],
+			): void;
 		};
 	}
 }
