@@ -11,8 +11,8 @@
 	"scripts": {
 		"build": "tsup index.tsx --format esm,cjs --dts --out-dir dist --clean",
 		"format": "biome format --write",
-		"lint": "biome lint --fix",
-		"lint:ci": "biome lint",
+		"lint": "biome check --fix",
+		"lint:ci": "biome ci",
 		"typecheck": "tsc --noEmit"
 	},
 	"publishConfig": {
@@ -29,7 +29,14 @@
 		}
 	},
 	"sideEffects": false,
-	"keywords": ["flowtag", "analytics", "nextjs", "react", "sdk", "ftag"],
+	"keywords": [
+		"flowtag",
+		"analytics",
+		"nextjs",
+		"react",
+		"sdk",
+		"ftag"
+	],
 	"author": "Flowtag Team & Contributors",
 	"license": "Apache-2.0",
 	"packageManager": "pnpm@10.14.0",
