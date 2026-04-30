@@ -11,14 +11,14 @@ interface FlowtagProps {
 
 /**
  * Flowtag component to add tracker in Next.js applications
- * 
+ *
  * Example implementation:
  * ```
  * <Flowtag trackerId="your-tracker-id" debug={true} syncWithGoogleTag={true} autoInit={true} />
  * ```
  *
  * @param props - Props for Flowtag component
- * @returns 
+ * @returns
  */
 function Flowtag(props: FlowtagProps) {
 	const {
@@ -63,7 +63,7 @@ function capture(eventName: string, eventData?: Record<string, any>) {
 	return window.flowtag.capture(eventName, eventData);
 }
 
-const flowtag = { fetchBeacon, consentCookies, getConsent, capture }
+const flowtag = { fetchBeacon, consentCookies, getConsent, capture };
 /**
  * @deprecated Use `flowtag` instead
  */
