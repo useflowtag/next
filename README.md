@@ -17,7 +17,7 @@ yarn add @flowtag/next
 npm install @flowtag/next
 ```
 ## Documentation
-You can find it [here](https://flowtagdocs.qwerty.ovh/docs/sdk/nextjs)
+You can find it [here](https://docs.flowtag.dev/sdk/analytics-next)
 
 ## Contributing
 
