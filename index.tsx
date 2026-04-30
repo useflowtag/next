@@ -24,7 +24,7 @@ interface FlowtagProps {
 function Flowtag(props: FlowtagProps) {
 	const {
 		trackerId,
-		baseUrl = "https://flowtagbeacon.qwerty.ovh/",
+		baseUrl = "https://beacon.flowtagservices.com",
 		debug = false,
 		autoInit = true,
 		syncWithGoogleTag = true,
