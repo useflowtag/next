@@ -30,11 +30,7 @@ jobs:
       - run: pnpm run lint:ci
       - run: pnpm run typecheck
       - run: pnpm run build
-      - run: |
-          echo "OIDC available: ${ACTIONS_ID_TOKEN_REQUEST_URL:+yes}"
-          pnpm exec semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm install -g npm@latest
       - run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
