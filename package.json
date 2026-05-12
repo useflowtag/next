@@ -9,11 +9,13 @@
 	},
 	"homepage": "https://docs.flowtag.dev/sdk/analytics-next",
 	"scripts": {
-		"build": "tsup index.tsx --format esm,cjs --dts --out-dir dist --clean",
-		"format": "biome format --write",
-		"lint": "biome check --fix",
-		"lint:ci": "biome ci",
-		"typecheck": "tsc --noEmit"
+    "build": "tsup src/index.ts --format esm,cjs --dts --out-dir dist --clean",
+    "test": "vitest run",
+    "lint": "biome check src",
+    "lint:pub": "publint",
+    "fmt": "biome format src",
+    "lint:ci": "biome ci",
+    "typecheck": "tsc --noEmit"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -39,16 +41,19 @@
 	],
 	"author": "Flowtag Team & Contributors",
 	"license": "Apache-2.0",
-	"packageManager": "pnpm@10.14.0",
+	"packageManager": "pnpm@11.1.1",
 	"peerDependencies": {
 		"next": ">=12.0.0",
 		"react": ">=16.8.0",
 		"react-dom": ">=16.8.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.2.7",
-		"@types/react": "^19.2.2",
-		"tsup": "^8.5.0",
-		"typescript": "^5.9.3"
+		"@biomejs/biome": "2.4.15",
+		"@semantic-release/npm": "^13.1.5",
+		"@types/react": "^19.2.14",
+		"publint": "^0.3.20",
+		"semantic-release": "^25.0.3",
+		"tsup": "^8.5.1",
+		"typescript": "^6.0.3"
 	}
 }
