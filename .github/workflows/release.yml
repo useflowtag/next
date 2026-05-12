@@ -30,7 +30,9 @@ jobs:
       - run: pnpm run lint:ci
       - run: pnpm run typecheck
       - run: pnpm run build
-      - run: npm install -g npm@latest
+      - run: | 
+          corepack enable
+          corepack prepare npm@latest --activate
       - run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
