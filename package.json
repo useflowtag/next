@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "git+https://github.com/useflowtag/next.git"
 	},
-	"homepage": "https://docs.flowtag.dev/sdk/analytics-next",
+	"homepage": "https://docs.flowtag.dev/sdk/js/analytics-nextjs",
 	"scripts": {
 		"build": "tsdown src/index.tsx --format esm,cjs --dts --out-dir dist --clean",
 		"test": "vitest run",
@@ -40,7 +40,7 @@
 		"sdk",
 		"ftag"
 	],
-	"author": "Flowtag Team & Contributors",
+	"author": "Flowtag Team & Contributors <hello@flowtag.dev>",
 	"license": "Apache-2.0",
 	"packageManager": "pnpm@11.1.1",
 	"peerDependencies": {
