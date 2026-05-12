@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   release:
+    environment: production
     name: Create release
     runs-on: ubuntu-latest
     steps:
