@@ -18,3 +18,7 @@ pnpm-debug.log*
 
 # Dotenv files
 .env*
+
+# LLM files
+.claude/
+.codex/

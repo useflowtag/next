@@ -99,4 +99,4 @@ const F = flowtag;
 
 export default Flowtag;
 export type { FlowtagProps };
-export { Flowtag, F, flowtag };
+export { F, Flowtag, flowtag };
