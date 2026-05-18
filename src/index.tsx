@@ -6,6 +6,7 @@ import type { FlowtagConfigOptions } from "./types";
 interface FlowtagProps {
 	trackerId: string;
 	baseUrl?: string;
+	tagUrl?: string;
 	debug?: boolean;
 	syncWithGoogleTag?: boolean;
 	autoInit?: boolean;
@@ -44,6 +45,7 @@ function Flowtag(props: FlowtagProps) {
 	const {
 		trackerId,
 		baseUrl = "https://beacon.flowtagservices.com",
+		tagUrl,
 		debug = false,
 		autoInit = true,
 		syncWithGoogleTag = true,
@@ -54,7 +56,7 @@ function Flowtag(props: FlowtagProps) {
 	return (
 		<Script
 			id={`__flowtag_next_${id}`}
-			src={joinURL(normalizedEndpoint, "/tag.js")}
+			src={tagUrl ? tagUrl : joinURL(normalizedEndpoint, "/tag.js")}
 			async
 			defer
 			data-ftag={trackerId}
