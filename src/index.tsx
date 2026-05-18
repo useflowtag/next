@@ -6,9 +6,28 @@ import type { FlowtagConfigOptions } from "./types";
 interface FlowtagProps {
 	trackerId: string;
 	baseUrl?: string;
+	tagUrl?: string;
 	debug?: boolean;
 	syncWithGoogleTag?: boolean;
 	autoInit?: boolean;
+}
+
+function normalizeBaseUrl(baseUrl: string): string {
+	const value = baseUrl.trim();
+
+	if (value.startsWith("http://") || value.startsWith("https://")) {
+		return new URL(value).toString();
+	}
+
+	if (value.startsWith("//")) {
+		return new URL(`https:${value}`).toString();
+	}
+
+	if (!value) {
+		return "/";
+	}
+
+	return value.startsWith("/") ? value : `/${value}`;
 }
 
 /**
@@ -26,17 +45,18 @@ function Flowtag(props: FlowtagProps) {
 	const {
 		trackerId,
 		baseUrl = "https://beacon.flowtagservices.com",
+		tagUrl,
 		debug = false,
 		autoInit = true,
 		syncWithGoogleTag = true,
 	} = props;
 	const id = useId();
-	const normalizedEndpoint = new URL(baseUrl).toString();
+	const normalizedEndpoint = normalizeBaseUrl(baseUrl);
 
 	return (
 		<Script
 			id={`__flowtag_next_${id}`}
-			src={joinURL(normalizedEndpoint, "/tag.js")}
+			src={tagUrl ? tagUrl : joinURL(normalizedEndpoint, "/tag.js")}
 			async
 			defer
 			data-ftag={trackerId}
