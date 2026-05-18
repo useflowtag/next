@@ -11,6 +11,24 @@ interface FlowtagProps {
 	autoInit?: boolean;
 }
 
+function normalizeBaseUrl(baseUrl: string): string {
+	const value = baseUrl.trim();
+
+	if (value.startsWith("http://") || value.startsWith("https://")) {
+		return new URL(value).toString();
+	}
+
+	if (value.startsWith("//")) {
+		return new URL(`https:${value}`).toString();
+	}
+
+	if (!value) {
+		return "/";
+	}
+
+	return value.startsWith("/") ? value : `/${value}`;
+}
+
 /**
  * Flowtag component to add tracker in Next.js applications
  *
@@ -31,7 +49,7 @@ function Flowtag(props: FlowtagProps) {
 		syncWithGoogleTag = true,
 	} = props;
 	const id = useId();
-	const normalizedEndpoint = new URL(baseUrl).toString();
+	const normalizedEndpoint = normalizeBaseUrl(baseUrl);
 
 	return (
 		<Script
