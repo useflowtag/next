@@ -13,7 +13,7 @@
 		"test": "vitest run",
 		"lint": "biome check src",
 		"lint:pub": "publint",
-		"fmt": "biome format src",
+		"fmt": "biome check src --write",
 		"lint:ci": "biome ci",
 		"typecheck": "tsc --noEmit"
 	},

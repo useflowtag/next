@@ -1,7 +1,7 @@
 import Script from "next/script";
 import { useId } from "react";
-import type { FlowtagConfigOptions } from "./types";
 import { joinURL } from "ufo";
+import type { FlowtagConfigOptions } from "./types";
 
 interface FlowtagProps {
 	trackerId: string;
