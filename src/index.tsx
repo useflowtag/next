@@ -1,6 +1,7 @@
 import Script from "next/script";
 import { useId } from "react";
 import type { FlowtagConfigOptions } from "./types";
+import { joinURL } from "ufo";
 
 interface FlowtagProps {
 	trackerId: string;
@@ -35,7 +36,7 @@ function Flowtag(props: FlowtagProps) {
 	return (
 		<Script
 			id={`__flowtag_next_${id}`}
-			src={new URL("tag.js", normalizedEndpoint).toString()}
+			src={joinURL(normalizedEndpoint, "/tag.js")}
 			async
 			defer
 			data-ftag={trackerId}
