@@ -3,6 +3,7 @@
 	"version": "0.0.0",
 	"description": "Flowtag tracking adapter for Next.js",
 	"main": "./dist/index.js",
+	"type": "module",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/useflowtag/next.git"
@@ -26,8 +27,8 @@
 	],
 	"exports": {
 		".": {
-			"import": "./dist/index.mjs",
 			"types": "./dist/index.d.mts",
+			"import": "./dist/index.mjs",
 			"default": "./dist/index.mjs"
 		}
 	},
