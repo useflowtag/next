@@ -2,9 +2,9 @@
 	"compilerOptions": {
 		"target": "es2016",
 		"jsx": "react-jsx",
-		"module": "nodenext",
+		"module": "esnext",
 		"rootDir": "./src",
-		"moduleResolution": "nodenext",
+		"moduleResolution": "bundler",
 		"declaration": true,
 		"emitDeclarationOnly": true,
 		"outDir": "./dist",
